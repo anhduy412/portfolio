@@ -1,66 +1,121 @@
-# gitignore template for ecu.test workspaces - by tracetronic https://tracetronic.com
-# website: https://www.ecu-test.com
-#   * all directories are related to the default directories, please adapt the .gitignore if you use customized directories
+# -----------------------------------------------------------------
+# .gitignore
+# Bare Minimum Git
+# https://salferrarello.com/starter-gitignore-file/
+# ver 20221125
+#
+# From the root of your project run
+# curl -O https://gist.githubusercontent.com/salcode/10017553/raw/.gitignore
+# to download this file
+#
+# This file is tailored for a general web project, it
+# is NOT optimized for a WordPress project.  See
+# https://gist.github.com/salcode/b515f520d3f8207ecd04
+# for a WordPress specific .gitignore
+#
+# This file specifies intentionally untracked files to ignore
+# http://git-scm.com/docs/gitignore
+#
+# NOTES:
+# The purpose of gitignore files is to ensure that certain files not
+# tracked by Git remain untracked.
+#
+# To ignore uncommitted changes in a file that is already tracked,
+# use `git update-index --assume-unchanged`.
+#
+# To stop tracking a file that is currently tracked,
+# use `git rm --cached`
+#
+# Change Log:
+# 20240826 unignore .dockerignore
+# 20221125 ignore /dist directory
+#          unignore /.git-blame-ignore-revs
+# 20220720 ignore /build directory
+# 20220128 unignore .nvmrc
+# 20210211 unignore .env.example
+# 20190705 ignore private/secret files
+# 20181206 remove trailing whitespaces
+# 20180714 unignore .phpcs.xml.dist
+# 20170502 unignore composer.lock
+# 20170502 ignore components loaded via Bower
+# 20150326 ignore jekyll build directory `/_site`
+# 20150324 Reorganized file to list ignores first and whitelisted last,
+#          change WordPress .gitignore link to preferred gist,
+#          add curl line for quick installation
+#          ignore composer files (vendor directory and lock file)
+# 20140606 Add .editorconfig as a tracked file
+# 20140418 remove explicit inclusion
+#          of readme.md (this is not an ignored file by default)
+# 20140407 Initially Published
+#
+# -----------------------------------------------------------------
 
-# Dynamic workspace settings
-#   * We don't recommend to ignore the .workspace directory, because of important 
-#     * project specific settings
-#     * local user settings
-.workspace/ETdrive.xml
-.workspace/favorites.xml
-.workspace/filters.xml
-.workspace/generators.xml
-.workspace/history.xml
-.workspace/parallelExecution.xml
-.workspace/signalviewer.xml
-.workspace/signalViewerHistory.json
-.workspace/signalviewer2layout.xml
-.workspace/testeditor.xml
-.workspace/tooladapter.xml
-.workspace/view.xml
-# optional, if your process depends on this file remove exclusion
-.workspace/attributeLists.xml
-.workspace/interactiveexecution.xml
-.workspace/protocol.xml
-.workspace/pythonlibrary.xml
-# deprecated, support for older versions
-.workspace/traceexplorer.xml
+# ignore all files starting with . or ~
+.*
+~*
 
-# Custom file formats and test dependencies
-#  * you can manage your artifacts also with test.guide (https://www.test-guide.info) and reference them via Playbooks
-*.arxml
-*.a2l
-*.dbc
-*.hex
-*.s19
-[tT]estdata
-[tT]estdaten
+# ignore node/grunt dependency directories
+node_modules/
 
-# Test results and test execution related content
-#   * Git is not intended to store and provide test results for all iterations
-#   * We recommend to use test.guide (https://www.test-guide.info) for the test report management
-TestReports
+# Ignore build directories.
+/build
+/dist
 
-# Report generators and templates
-#   * if you want to provide (f.e.) your own report generators exclude the directory here and ignore only the unnecessary subdirectories
-Templates
+# ignore composer vendor directory
+/vendor
 
-# optional, default for external Python libraries
-PyLibs
+# ignore components loaded via Bower
+/bower_components
 
-# Exclude large binary artifacts
-#  * you can manage your artifacts also with test.guide (https://www.test-guide.info) and reference them via Playbooks
-Offline-FIUs
-Offline-Models
-Offline-SGBDs
+# ignore jekyll build directory
+/_site
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
 *.exe
-*.msi
-*.zip
+*.o
+*.so
+
+# ignore packaged files
 *.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
-# Exclude default and custom temporary directories
-Backup_*
+# ignore private/secret files
+*.der
+*.key
+*.pem
 
-# Python bytecode and cache files
-__pycache__/
-*.py[cod]
+# --------------------------------------------------------
+# BEGIN Explictly Allowed Files (i.e. do NOT ignore these)
+# --------------------------------------------------------
+
+# track these files, if they exist
+!.dockerignore
+!.editorconfig
+!.env.example
+!.git-blame-ignore-revs
+!.gitignore
+!.nvmrc
+!.phpcs.xml.dist
